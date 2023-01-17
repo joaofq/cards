@@ -1,0 +1,24 @@
+.header {
+  background-color: #353a40;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.header__navbar {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  text-decoration: none;
+}
+
+.navigation__bar_link {
+  text-decoration: none;
+  color: #e9e9e9;
+}
+
+.navigation__bar_link:hover {
+  color: white;
+}
