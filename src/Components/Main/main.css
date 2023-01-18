@@ -39,3 +39,8 @@
   width: 100px;
   cursor: pointer;
 }
+
+.main__button[disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}

@@ -1,11 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import './main.css';
+import Popup from '../Popup/Popup';
 import { getDeck, drawCard, shuffleDeck } from '../../utils/API';
 
 function Main(props) {
   const [baralho, setBaralho] = useState({});
-  const [userCard, setUserCard] = useState('');
+  const [userCard, setUserCard] = useState(false);
   const [computerCard, setComputerCard] = useState('');
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [isUserWinner, setIsUserWinner] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const userImage = useRef();
   const computerImage = useRef();
@@ -17,25 +21,33 @@ function Main(props) {
   }, []);
 
   function handleButtonClick() {
+    setIsPopupOpen(false);
+
     shuffleDeck(baralho.deck_id);
     computerImage.current.innerHTML = `<span ref=${computerImage}></span>`;
     drawCard(baralho.deck_id).then((res) => {
       setUserCard(res.cards[0]);
       setComputerCard(res.cards[1]);
       userImage.current.innerHTML = `<img src=${res.cards[0].image} className="main__card_img" />`;
+      setIsDisabled(false);
     });
   }
 
   function handlePlay() {
     computerImage.current.innerHTML = `<img src=${computerCard.image} className="main__card_img" />`;
+    setIsDisabled(true);
+
     let notaUser = zeroConvert(userCard.value);
     let notaPc = zeroConvert(computerCard.value);
     console.log(notaUser + ' x ' + notaPc);
     if (notaUser > notaPc) {
+      setIsUserWinner(true);
       console.log('Usuário Ganhou!');
     } else {
       console.log('Computador ganhou!');
+      setIsUserWinner(false);
     }
+    setIsPopupOpen(true);
   }
 
   function zeroConvert(nota) {
@@ -61,13 +73,21 @@ function Main(props) {
         </div>
       </section>
       <section className="main__bottom">
-        <button className="main__button" onClick={handleButtonClick}>
-          Tirar carta
-        </button>
-        <button className="main__button" onClick={handlePlay}>
-          Apostar!
-        </button>
+        <input
+          type="button"
+          className="main__button"
+          onClick={handleButtonClick}
+          value={computerCard === '' ? 'Buy card' : 'Rebuy card'}
+        />
+        <input
+          type="button"
+          className={'main__button'}
+          onClick={handlePlay}
+          value="Play!"
+          disabled={isDisabled}
+        />
       </section>
+      <Popup isPopupOpen={isPopupOpen} isUserWinner={isUserWinner} />
     </main>
   );
 }
