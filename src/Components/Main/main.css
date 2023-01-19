@@ -16,11 +16,16 @@
 }
 
 .main__card {
-  width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+}
+
+@media screen and (max-width: 536px) {
+  .main__card_img img {
+    max-width: 120px;
+  }
 }
 
 .main__bottom {

@@ -28,13 +28,13 @@ function Main(props) {
     drawCard(baralho.deck_id).then((res) => {
       setUserCard(res.cards[0]);
       setComputerCard(res.cards[1]);
-      userImage.current.innerHTML = `<img src=${res.cards[0].image} className="main__card_img" />`;
+      userImage.current.innerHTML = `<img src=${res.cards[0].image} />`;
       setIsDisabled(false);
     });
   }
 
   function handlePlay() {
-    computerImage.current.innerHTML = `<img src=${computerCard.image} className="main__card_img" />`;
+    computerImage.current.innerHTML = `<img src=${computerCard.image}  />`;
     setIsDisabled(true);
 
     let notaUser = zeroConvert(userCard.value);
@@ -47,7 +47,7 @@ function Main(props) {
       console.log('Computador ganhou!');
       setIsUserWinner(false);
     }
-    setIsPopupOpen(true);
+    setTimeout(() => setIsPopupOpen(true), 1000);
   }
 
   function zeroConvert(nota) {
@@ -59,17 +59,21 @@ function Main(props) {
     return parseInt(nota);
   }
 
+  function handlePopupClose() {
+    setIsPopupOpen(false);
+  }
+
   return (
     <main className="main">
       <h2>{`Baralho: ${baralho.deck_id}`}</h2>
       <section className="main__cards">
         <div className="main__card">
           <h2 className="main__card_title">Jogador</h2>
-          <span ref={userImage}></span>
+          <span ref={userImage} className="main__card_img"></span>
         </div>
         <div className="main__card">
           <h2 className="main__card_title">Computador</h2>
-          <span ref={computerImage}></span>
+          <span ref={computerImage} className="main__card_img"></span>
         </div>
       </section>
       <section className="main__bottom">
@@ -87,7 +91,11 @@ function Main(props) {
           disabled={isDisabled}
         />
       </section>
-      <Popup isPopupOpen={isPopupOpen} isUserWinner={isUserWinner} />
+      <Popup
+        isPopupOpen={isPopupOpen}
+        isUserWinner={isUserWinner}
+        popupClose={handlePopupClose}
+      />
     </main>
   );
 }
