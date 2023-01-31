@@ -27,7 +27,7 @@ npm run start
 
 **Links**
 
-- [Link para visualização do projeto](https://joaofq.github.io/projeto-cards/)
+- [Link para visualização do projeto](https://joaofq.github.io/cards)
 
 - [Link da paleta de cores](https://color.adobe.com/pt/search?q=casino)
 
