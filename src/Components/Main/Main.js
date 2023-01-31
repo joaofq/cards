@@ -39,12 +39,9 @@ function Main(props) {
 
     let notaUser = zeroConvert(userCard.value);
     let notaPc = zeroConvert(computerCard.value);
-    console.log(notaUser + ' x ' + notaPc);
     if (notaUser > notaPc) {
       setIsUserWinner(true);
-      console.log('Usuário Ganhou!');
     } else {
-      console.log('Computador ganhou!');
       setIsUserWinner(false);
     }
     setTimeout(() => setIsPopupOpen(true), 1000);
@@ -52,7 +49,6 @@ function Main(props) {
 
   function zeroConvert(nota) {
     if (nota === '0') {
-      console.log('troucou ' + nota + typeof nota);
       nota = '10';
       return parseInt(nota);
     }
