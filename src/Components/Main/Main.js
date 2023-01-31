@@ -65,14 +65,14 @@ function Main(props) {
 
   return (
     <main className="main">
-      <h2>{`Baralho: ${baralho.deck_id}`}</h2>
+      <h2 className="main__baralho">{`Deck: ${baralho.deck_id}`}</h2>
       <section className="main__cards">
         <div className="main__card">
-          <h2 className="main__card_title">Jogador</h2>
+          <h2 className="main__card_title">Player</h2>
           <span ref={userImage} className="main__card_img"></span>
         </div>
         <div className="main__card">
-          <h2 className="main__card_title">Computador</h2>
+          <h2 className="main__card_title">Computer</h2>
           <span ref={computerImage} className="main__card_img"></span>
         </div>
       </section>

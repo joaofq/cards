@@ -2,14 +2,18 @@
   background-color: #353a40;
   color: white;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  max-height: 80px;
+  padding: 20px;
+}
+
+.header__logo {
+  margin: 0;
 }
 
 .header__navbar {
   display: flex;
-  justify-content: space-around;
+  padding: 10px;
   gap: 20px;
   text-decoration: none;
 }
@@ -21,4 +25,8 @@
 
 .navigation__bar_link:hover {
   color: white;
+}
+
+.active {
+  text-decoration: underline;
 }

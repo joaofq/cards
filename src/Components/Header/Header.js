@@ -4,13 +4,13 @@ import { NavLink } from 'react-router-dom';
 function Header() {
   return (
     <header className="header">
-      <h1 className="header__logo">Cards </h1>
+      <h1 className="header__logo">Cards</h1>
       <nav className="header__navbar">
-        <NavLink to="home" className="navigation__bar_link">
-          Início
+        <NavLink to="about" className="navigation__bar_link">
+          About
         </NavLink>
-        <NavLink to="contato" className="navigation__bar_link">
-          Contato
+        <NavLink to="/" className="navigation__bar_link">
+          Game
         </NavLink>
       </nav>
     </header>

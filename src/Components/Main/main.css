@@ -1,35 +1,47 @@
 .main {
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: flex-start;
-  min-height: 600px;
+  gap: 20px;
+  background-color: #09a603;
+  height: 100vh;
+  padding-bottom: 60px;
+}
+
+.main__baralho {
+  text-align: center;
 }
 
 .main__cards {
-  width: 90%;
-  min-height: 400px;
   display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
 
 .main__card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  text-align: center;
+  width: 100%;
+  min-height: 300px;
+}
+
+.main__card_title {
+  font-size: 1.3em;
 }
 
 @media screen and (max-width: 536px) {
   .main__card_img img {
-    max-width: 120px;
+    width: 80%;
+  }
+
+  .main__card {
+    min-height: 150px;
   }
 }
 
 .main__bottom {
-  margin-top: 40px;
+  margin-top: 10px;
   display: flex;
   gap: 20px;
 }
