@@ -10,9 +10,13 @@ function Main(props) {
   const [isDisabled, setIsDisabled] = useState(true);
   const [isUserWinner, setIsUserWinner] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [scorePlayer, setScorePlayer] = useState(0);
+  const [scoreComputer, setScoreComputer] = useState(0);
 
   const userImage = useRef();
   const computerImage = useRef();
+  const placarPlayer = useRef();
+  const placarComputer = useRef();
 
   useEffect(() => {
     getDeck().then((res) => {
@@ -41,8 +45,10 @@ function Main(props) {
     let notaPc = zeroConvert(computerCard.value);
     if (notaUser > notaPc) {
       setIsUserWinner(true);
+      setScorePlayer(scorePlayer + 1);
     } else {
       setIsUserWinner(false);
+      setScoreComputer(scoreComputer + 1);
     }
     setTimeout(() => setIsPopupOpen(true), 1000);
   }
@@ -65,10 +71,12 @@ function Main(props) {
       <section className="main__cards">
         <div className="main__card">
           <h2 className="main__card_title">Player</h2>
+          <p ref={placarPlayer}>{scorePlayer}</p>
           <span ref={userImage} className="main__card_img"></span>
         </div>
         <div className="main__card">
           <h2 className="main__card_title">Computer</h2>
+          <p ref={placarComputer}>{scoreComputer}</p>
           <span ref={computerImage} className="main__card_img"></span>
         </div>
       </section>

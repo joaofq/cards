@@ -16,7 +16,6 @@ O aplicativo consiste em um jogo onde ganha quem tirar a maior carta do baralho.
 
 **Melhorias**
 
-- Implementar placar
 - Implementar função para todas as cartas do baralho
 
 **Rodando o projeto**
